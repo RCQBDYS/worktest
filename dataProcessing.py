@@ -13,7 +13,7 @@ def read_txt(path):
     file = open(path, encoding='utf-8')
     line_content = file.readlines()
     process_content_list = list()
-    process_content_list.append(['@timestamp','message'])
+    process_content_list.append(['@timestamp', 'message'])
     for item in line_content:
         temp = item.strip()
         line_list = list()

@@ -8,11 +8,15 @@ client = kudu.connect(host='kudu.master', port=7051)
 # 为新表定义架构
 builder = kudu.schema_builder()
 builder.add_column('key').type(kudu.int64).nullable(False).primary_key()
-builder.add_column('ts_val', type_=kudu.unixtime_micros, nullable=False, compression='lz4')
+builder.add_column('ts_val',
+                   type_=kudu.unixtime_micros,
+                   nullable=False,
+                   compression='lz4')
 schema = builder.build()
 
 # 定义分区模式
-partitioning = Partitioning().add_hash_partitions(column_names=['key'], num_buckets=3)
+partitioning = Partitioning().add_hash_partitions(column_names=['key'],
+                                                  num_buckets=3)
 
 # 创建新表
 client.create_table('python-example', schema, partitioning)

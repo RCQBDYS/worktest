@@ -56,11 +56,14 @@ def string_match(content):
     result_content = list()
     for item in A1_list:
         temp = list()
-        A1_time = re.search(r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}).*(originals:>0A,1.*)', item)
+        A1_time = re.search(
+            r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}).*(originals:>0A,1.*)',
+            item)
         # A1_content = re.search(r'(originals:>0A,1.*)', item).group()
         sample = re.search(r'^', item)
         print(sample.group())
-        A1_device_time = re.search(r'\d{4}/\d{2}/\d{2} (\d{2}:\d{2}:\d{2}).*(.,.)', item)
+        A1_device_time = re.search(
+            r'\d{4}/\d{2}/\d{2} (\d{2}:\d{2}:\d{2}).*(.,.)', item)
         # result_content.append(temp)
 
     return result_content
